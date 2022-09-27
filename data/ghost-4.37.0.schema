@@ -1,0 +1,752 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome",
+  "definitions": {
+    "Welcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "db": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DB"
+          }
+        }
+      },
+      "required": [
+        "db"
+      ],
+      "title": "Welcome"
+    },
+    "DB": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "DB"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_theme_settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomThemeSetting"
+          }
+        },
+        "posts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Post"
+          }
+        },
+        "posts_authors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Posts"
+          }
+        },
+        "posts_meta": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PostsMeta"
+          }
+        },
+        "posts_tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Posts"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        },
+        "roles_users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RolesUser"
+          }
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Setting"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "qt-uri-protocols": [
+                    "https"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      },
+      "required": [
+        "custom_theme_settings",
+        "posts",
+        "posts_authors",
+        "posts_meta",
+        "posts_tags",
+        "roles",
+        "roles_users",
+        "settings",
+        "tags",
+        "users"
+      ],
+      "title": "Data"
+    },
+    "CustomThemeSetting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "theme": {
+          "$ref": "#/definitions/Theme"
+        },
+        "key": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "key",
+        "theme",
+        "type",
+        "value"
+      ],
+      "title": "CustomThemeSetting"
+    },
+    "Post": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "mobiledoc": {
+          "type": "string"
+        },
+        "html": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "comment_id": {
+          "type": "string"
+        },
+        "plaintext": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "feature_image": {
+          "type": "null"
+        },
+        "featured": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/PostType"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "locale": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        },
+        "email_recipient_filter": {
+          "$ref": "#/definitions/EmailRecipientFilter"
+        },
+        "author_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "custom_excerpt": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "codeinjection_head": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "codeinjection_foot": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "custom_template": {
+          "type": "null"
+        },
+        "canonical_url": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "author_id",
+        "canonical_url",
+        "codeinjection_foot",
+        "codeinjection_head",
+        "comment_id",
+        "created_at",
+        "custom_excerpt",
+        "custom_template",
+        "email_recipient_filter",
+        "feature_image",
+        "featured",
+        "html",
+        "id",
+        "locale",
+        "mobiledoc",
+        "plaintext",
+        "published_at",
+        "slug",
+        "status",
+        "title",
+        "type",
+        "updated_at",
+        "uuid",
+        "visibility"
+      ],
+      "title": "Post"
+    },
+    "Posts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "post_id": {
+          "type": "string"
+        },
+        "author_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "sort_order": {
+          "type": "integer"
+        },
+        "tag_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "post_id",
+        "sort_order"
+      ],
+      "title": "Posts"
+    },
+    "PostsMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "post_id": {
+          "type": "string"
+        },
+        "og_image": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "qt-uri-protocols": [
+                "https"
+              ]
+            }
+          ]
+        },
+        "og_title": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "og_description": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "twitter_image": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "qt-uri-protocols": [
+                "https"
+              ]
+            }
+          ]
+        },
+        "twitter_title": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "twitter_description": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "meta_title": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "meta_description": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "email_subject": {
+          "type": "null"
+        },
+        "frontmatter": {
+          "type": "null"
+        },
+        "feature_image_alt": {
+          "type": "null"
+        },
+        "feature_image_caption": {
+          "type": "null"
+        },
+        "email_only": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "email_only",
+        "email_subject",
+        "feature_image_alt",
+        "feature_image_caption",
+        "frontmatter",
+        "id",
+        "meta_description",
+        "meta_title",
+        "og_description",
+        "og_image",
+        "og_title",
+        "post_id",
+        "twitter_description",
+        "twitter_image",
+        "twitter_title"
+      ],
+      "title": "PostsMeta"
+    },
+    "Role": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "created_at",
+        "description",
+        "id",
+        "name",
+        "updated_at"
+      ],
+      "title": "Role"
+    },
+    "RolesUser": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "role_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "role_id",
+        "user_id"
+      ],
+      "title": "RolesUser"
+    },
+    "Setting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "qt-uri-protocols": [
+                "https"
+              ]
+            }
+          ]
+        },
+        "type": {
+          "$ref": "#/definitions/SettingType"
+        },
+        "flags": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "created_at",
+        "flags",
+        "group",
+        "id",
+        "key",
+        "type",
+        "updated_at",
+        "value"
+      ],
+      "title": "Setting"
+    },
+    "User": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "profile_image": {
+          "type": "string"
+        },
+        "cover_image": {
+          "type": "null"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "website": {
+          "type": "null"
+        },
+        "location": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "null"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "accessibility": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "null"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        },
+        "meta_title": {
+          "type": "null"
+        },
+        "meta_description": {
+          "type": "null"
+        },
+        "tour": {
+          "type": "string"
+        },
+        "last_seen": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "accessibility",
+        "bio",
+        "cover_image",
+        "created_at",
+        "email",
+        "facebook",
+        "id",
+        "last_seen",
+        "locale",
+        "location",
+        "meta_description",
+        "meta_title",
+        "name",
+        "password",
+        "profile_image",
+        "slug",
+        "status",
+        "tour",
+        "twitter",
+        "updated_at",
+        "visibility",
+        "website"
+      ],
+      "title": "User"
+    },
+    "Meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exported_on": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "exported_on",
+        "version"
+      ],
+      "title": "Meta"
+    },
+    "Theme": {
+      "type": "string",
+      "enum": [
+        "Casper-main"
+      ],
+      "title": "Theme"
+    },
+    "EmailRecipientFilter": {
+      "type": "string",
+      "enum": [
+        "none",
+        "all"
+      ],
+      "title": "EmailRecipientFilter"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "published",
+        "draft"
+      ],
+      "title": "Status"
+    },
+    "PostType": {
+      "type": "string",
+      "enum": [
+        "page",
+        "post"
+      ],
+      "title": "PostType"
+    },
+    "Visibility": {
+      "type": "string",
+      "enum": [
+        "public"
+      ],
+      "title": "Visibility"
+    },
+    "SettingType": {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "array",
+        "boolean",
+        "object"
+      ],
+      "title": "SettingType"
+    }
+  }
+}

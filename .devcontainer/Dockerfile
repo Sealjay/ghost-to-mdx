@@ -1,23 +1,16 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.192.0/containers/dotnet/.devcontainer/base.Dockerfile
+FROM mcr.microsoft.com/vscode/devcontainers/miniconda:0-3
 
-# [Choice] .NET version: 5.0, 3.1, 2.1
-ARG VARIANT="5.0"
-FROM mcr.microsoft.com/vscode/devcontainers/dotnet:0-${VARIANT}
+# Copy environment.yml (if found) to a temp location so we update the environment. Also
+# copy "noop.txt" so the COPY instruction does not fail if no environment.yml exists.
+COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
+RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
+    && rm -rf /tmp/conda-tmp
 
-# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-ARG NODE_VERSION="none"
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+# [Optional] Uncomment to install a different version of Python than the default
+# RUN conda install -y python=3.6 \
+#     && pip install --no-cache-dir pipx \
+#     && pipx reinstall-all
 
-# [Option] Install Azure CLI
-ARG INSTALL_AZURE_CLI="false"
-COPY library-scripts/*.sh library-scripts/*.env /tmp/library-scripts/
-RUN if [ "$INSTALL_AZURE_CLI" = "true" ]; then bash /tmp/library-scripts/azcli-debian.sh; fi \
-    && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
-
-# Add python3
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y software-properties-common gcc \
-     && apt-get -y install --no-install-recommends python3.9 python3-doc python3-distutils python3-venv python3-pip python3-apt python3-dev \
-     && python3 -m pip install --no-cache-dir --upgrade pip
-
-# Install commitizen as a global node package
-RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && echo '{ \"path\": \"cz-customizable\" }' > ~/.czrc && npm install -g commitizen cz-customizable" 2>&1
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
