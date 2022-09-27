@@ -36,9 +36,12 @@ This project uses Conda for managing dependencies, but you can use the requireme
 5. Get some space back: `conda clean -a`
 
 ### Run the python application
-```bash
-py convert.py <pathtofile>
-```
+
+- `convert_ghost_to_html.py` will export flat-file HTML for posts and pages, along with metadata in YAML files.
+- `convert_ghost_to_mdx.py` will export MDX and HTML suitable for use in a NextJS static site.
+
+### Modifying the templates
+MDX templates are found in the `data` folder, and follow the examples on the [NextJS](https://nextjs.org/docs/advanced-features/using-mdx) website.
 
 ## Contact
 Feel free to contact me [on Twitter](https://twitter.com/sealjay_clj). For bugs, please [raise an issue on GitHub](https://github.com/Sealjay/ghost-to-mdx/issue).

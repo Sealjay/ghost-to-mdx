@@ -820,3 +820,6 @@ data/users.yaml
 data/pages.yaml
 data/pages
 data/pages/*
+data/posts
+data/posts/*
+data/posts.yaml
