@@ -25,6 +25,12 @@ ghost-to-mdx is available under the [MIT Licence](./LICENCE).and is freely avail
 ## Getting started with this repository
 You can use a [dev container](https://docs.microsoft.com/en-us/azure-sphere/app-development/container-build-vscode?&WT.mc_id=AI-MVP-500420) to run this in VS Code, or in [GitHub codespaces](https://github.com/features/codespaces).
 
+### Downloading the Ghost export file
+1. Login to your Ghost admin panel.
+2. Go to your settings page.
+3. Go to the "Labs" tab.
+4. Click "Export Content".
+5. Download the file.
 
 ### Install the required python dependencies
 This project uses Conda for managing dependencies, but you can use the requirements.txt file to install the dependencies using pip.
@@ -39,6 +45,10 @@ This project uses Conda for managing dependencies, but you can use the requireme
 
 - `convert_ghost_to_html.py` will export flat-file HTML for posts and pages, along with metadata in YAML files.
 - `convert_ghost_to_mdx.py` will export MDX and HTML suitable for use in a NextJS static site.
+
+
+### Points to note
+- Your images will remain wherever you have them mouned in storage, and you will need to copy them to a new location or CDN in your project.
 
 ### Modifying the templates
 MDX templates are found in the `data` folder, and follow the examples on the [NextJS](https://nextjs.org/docs/advanced-features/using-mdx) website.
