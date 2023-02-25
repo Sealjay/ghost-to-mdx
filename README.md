@@ -31,6 +31,7 @@ You can use a [dev container](https://docs.microsoft.com/en-us/azure-sphere/app-
 3. Go to the "Labs" tab.
 4. Click "Export Content".
 5. Download the file.
+6. Save the file as `export.json` in the `data` folder.
 
 ### Install the required python dependencies
 This project uses Conda for managing dependencies, but you can use the requirements.txt file to install the dependencies using pip.
