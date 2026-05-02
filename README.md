@@ -1,3 +1,5 @@
+> **Archived.** This repository is no longer maintained. The blog migration to Astro is complete. Note that the schema would need updating if used with a current version of Ghost.
+
 # ghost-to-mdx
 > A tool to convert Ghost export files to a series of .MDX files.
 
